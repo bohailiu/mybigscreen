@@ -7,6 +7,19 @@ import 'lib-flexible'
 
 import * as echarts from 'echarts'
 
+import ElementUI from 'element-ui';
+
+import 'element-ui/lib/theme-chalk/index.css';
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)
+
+Vue.use(ElementUI);
+
 Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false

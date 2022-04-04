@@ -20,9 +20,11 @@ export default {
   methods: {
     drawChart() {
       let myChart = this.$echarts.init(document.querySelector(".bar .chart"));
+      myChart.showLoading()//网速慢时显示加载效果
       axios.get("/ssmatching").then(
         (response) => {
           console.log("请求成功了", response.data.content.data);
+          myChart.hideLoading()//请求成功后结束加载效果
           let arr = response.data.content.data;
           // arr.forEach(i => {
           //   console.log(i)
@@ -51,6 +53,9 @@ export default {
           ];
 
           let option = {
+            
+            animation:true,
+            animationDuration:3000,
             title: {
               text: "区 域",
               textStyle: {
@@ -141,9 +146,23 @@ export default {
                   // 修改柱子圆角
                   // barBorderRadius:5
                   // 修改颜色
-                  color: "rgb(0, 200, 252)",
+                  // color: "rgb(0, 200, 252)",
+                  color:new this.$echarts.graphic.LinearGradient(0,1,0,0,[
+                    {
+                      offset:0,
+                      color:'rgba(0, 200, 252,0)'
+                    },
+                    {
+                      offset:0.4,
+                      color:'rgba(0, 200, 252,.3)'
+                    },
+                    {
+                      offset:1,
+                      color:'rgb(0, 200, 252)'
+                    },
+                  ])
                   // 边框色
-                  borderColor: "",
+                  // borderColor: "",
                   // 边框宽
                   // borderWidth:10,
                 },
@@ -156,7 +175,21 @@ export default {
                 // data: [500, 470, 280, 450, 340, 400, 380, 500, 300],
                 data:teacherData,
                 itemStyle: {
-                  color: "rgb(0, 109, 232)",
+                  // color: "rgb(0, 109, 232)",
+                  color:new this.$echarts.graphic.LinearGradient(0,1,0,0,[
+                    {
+                      offset:0,
+                      color:'rgba(0, 109, 232,0)'
+                    },
+                    {
+                      offset:0.4,
+                      color:'rgba(0, 109, 232,.3)'
+                    },
+                    {
+                      offset:1,
+                      color:'rgb(0, 109, 232)'
+                    },
+                  ],false)
                 },
               },
             ],

@@ -24,7 +24,7 @@ export default {
     position: relative;
     height: 100vh;
     width: 100vw;
-    // min-width: 1024px;
+    min-width: 1024px;
     max-width: 1920px;
 }
 

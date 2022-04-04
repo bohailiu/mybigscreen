@@ -15,7 +15,7 @@
          
           <!-- 垂直柱状图 -->
           <itemPanel>
-            <LeftCenter />
+            <!-- <LeftCenter /> -->
           </itemPanel>
           
           <!-- 扇形图 -->
@@ -93,8 +93,11 @@ export default {
 .content {
   position: absolute;
   top: 0;
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
+  height: 100vh;
+    width: 100vw;
+  left:.125rem
 }
 
 .mainbox {
