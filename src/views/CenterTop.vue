@@ -2,11 +2,11 @@
   <div class="map">
     <!-- 外层轮播图 -->
     <div class="block">
-      <el-carousel 
-      trigger="click" 
-      height="5.45rem" 
-      :interval="90000000"
-      :initial-index = '1'
+      <el-carousel
+        trigger="click"
+        height="5.45rem"
+        :interval="90000000"
+        :initial-index="1"
       >
         <!-- 1.轮播图 -->
         <el-carousel-item>
@@ -16,7 +16,11 @@
         <el-carousel-item>
           <DeviceMap />
         </el-carousel-item>
-        <el-carousel-item> </el-carousel-item>
+        <!-- 3.视频 -->
+        <el-carousel-item>
+          <Video />
+        </el-carousel-item>
+        
         <el-carousel-item> </el-carousel-item>
       </el-carousel>
     </div>
@@ -29,11 +33,13 @@
 <script>
 import ImgSlide from "../components/ImgSlide";
 import DeviceMap from "../components/DeviceMap";
+import Video from "../components/Video";
 export default {
   name: "CenterTop",
   components: {
     ImgSlide,
     DeviceMap,
+    Video,
   },
 };
 </script>
@@ -43,7 +49,7 @@ export default {
   color: rgb(69, 143, 185);
   border: solid 1px red;
   height: 7.275rem;
-  // width: 8.4375rem;
+  width: 8.5375rem;
   margin-bottom: 0.4375rem;
 }
 

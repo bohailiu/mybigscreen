@@ -34,7 +34,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 // 旋转未选中扇形
 .device-out-ring {
   position: relative;

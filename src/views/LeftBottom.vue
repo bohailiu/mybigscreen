@@ -113,7 +113,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .course-pie {
   // 课程扇形图位置
   position: absolute;
