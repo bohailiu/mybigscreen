@@ -29,7 +29,10 @@
           <!-- 地图模块 -->
           <CenterTop />
           <!-- 底部折线图模块 -->
-          <CenterBottom />
+          <itemPanel>
+            <CenterBottom />
+          </itemPanel>
+          
         </div>
         <!-- 右栏 -->
         <div class="column">
@@ -97,11 +100,12 @@ export default {
   // height: 100%;
   height: 100vh;
   width: 100vw;
-  left:.125rem
+  // left: .0625rem
+  // right: -0.125rem;
 }
 
 .mainbox {
-  min-width: 1024px;
+  // min-width: 1024px;
   max-width: 1920px;
   // height: 1080px;
   margin: 0 auto;
@@ -126,7 +130,7 @@ export default {
   }
 
   h2 {
-    height: 0.4125rem;
+    height: .375rem;
     background-color: rgb(11, 38, 77);
     color: rgb(69, 143, 185);
     font-size: 0.25rem;

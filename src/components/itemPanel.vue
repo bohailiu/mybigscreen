@@ -10,13 +10,14 @@ export default {
 };
 </script>
 
-<style lang="less"scoped>
+<style lang="less">
 .panel {
   position: relative;
   height: 3.425rem;
+  // height: 4.375rem;
   // background-color: ;
   border: 1px solid rgba(6, 68, 110);
-  padding: 0.1125rem 0.2375rem 0.1875rem;
+  padding: 0 0.2375rem 0.1875rem;
   margin-bottom: 0.4375rem;
 
   &::after {

@@ -20,9 +20,9 @@ export default {
     data() {
         return {
             imgbox:[
-                {id:0,idView:require('../assets/imgbox/1.png')},
-                {id:2,idView:require('../assets/imgbox/1.png')},
-                {id:3,idView:require('../assets/imgbox/1.png')}
+                {id:0,idView:require('../assets/imgbox/1.jpg')},
+                {id:1,idView:require('../assets/imgbox/2.jpg')},
+                {id:2,idView:require('../assets/imgbox/3.jpg')}
             ]
         }
     },

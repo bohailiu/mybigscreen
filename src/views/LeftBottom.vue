@@ -4,11 +4,11 @@
     <div class="course-list">
       <h3>热门课程排行榜</h3>
       <ul>
-        <li>烧烫伤</li>
-        <li>心脏复苏理论</li>
-        <li>气道异物梗阻</li>
-        <li>急救概念与程序</li>
-        <li>创伤类型</li>
+        <li v-for='item in data' :key='item.id'>
+          <span>{{item.top}}</span>
+          <span>{{item.name}}</span>
+          <span>{{item.num}}</span>
+        </li>
       </ul>
     </div>
     <div class="course-pie"></div>
@@ -19,14 +19,23 @@
 <script>
 export default {
   name: "LeftBottom",
+  data(){
+    return{
+      data:[
+        {id:1,top:'Top1',name:'烧烫伤',num:13786},
+        {id:2,top:'Top2',name:'心脏复苏理论',num:9916},
+        {id:3,top:'Top3',name:'气道异物梗阻',num:9551},
+        {id:4,top:'Top4',name:'急救概念与程序',num:6093},
+        {id:5,top:'Top5',name:'创伤类型',num:5622},
+      ]
+    }
+  },
   mounted() {
-    this.drawChart();
+    this.coursePie();
   },
   methods: {
-    drawChart() {
-      let myChart = this.$echarts.init(
-        document.querySelector(".course-pie")
-      );
+    coursePie() {
+      let myChart = this.$echarts.init(document.querySelector(".course .course-pie"));
       let option = {
         title: {
           text: "课程学习占比",
@@ -44,7 +53,7 @@ export default {
           orient: "vertical",
           textStyle: {
             color: "#fff",
-            fontSize: 10,
+            fontSize: '0.125rem',
           },
           right: 0,
           bottom: 20,
@@ -102,10 +111,8 @@ export default {
           },
         ],
       };
-      // 设置配置项给实例对象
       myChart.setOption(option);
-      // 监听窗口大小图表自适应
-      window.addEventListener("resize", function () {
+      window.addEventListener("resize", ()=> {
         myChart.resize();
       });
     },
@@ -114,10 +121,39 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.course-list{
+  color: #fff;
+  font-size: 0.175rem;
+  h3{
+    color:rgb(118,194,214) ;
+    margin-top: .4rem;
+    margin-bottom: .1rem;
+    font-size: 0.1875rem;
+  }
+
+  ul{
+    width: 2.5rem;
+    height: 1.9rem;
+    font-size: .2rem;
+  }
+  li{
+    list-style: none;
+    margin-bottom: .125rem;
+    position: relative;
+    span{
+      margin-right: .125rem;
+    }
+
+    span:nth-child(3){
+      position: absolute;
+      right: 0;
+    }
+  }
+}
 .course-pie {
   // 课程扇形图位置
   position: absolute;
-  right: 0.225rem;
+  right: .15rem;
   bottom: 0.1875rem;
   // 大小
   width: 3.325rem;

@@ -4,24 +4,30 @@
     <div class="chart">
       <div class="device-out-ring">
         <div class="img1-wrapper">
-          <img class="img1" src="../assets/未选中块.png" alt="" />
+          <img class="img1" src="@/assets/imgbox/lefttop/fan.png" alt="" />
         </div>
         <div class="img2-wrapper">
-          <img class="img2" src="../assets/未选中块.png" alt="" />
+          <img class="img2" src="@/assets/imgbox/lefttop/fan.png" alt="" />
         </div>
         <div class="img3-wrapper">
-          <img class="img3" src="../assets/未选中块.png" alt="" />
+          <img class="img3" src="@/assets/imgbox/lefttop/fan.png" alt="" />
         </div>
         <div class="img4-wrapper">
-          <img class="img4" src="../assets/未选中块.png" alt="" />
+          <img class="img4" src="@/assets/imgbox/lefttop/fan.png" alt="" />
         </div>
         <div class="img5-wrapper">
-          <img class="img5" src="../assets/未选中块.png" alt="" />
+          <img class="img5" src="@/assets/imgbox/lefttop/fan.png" alt="" />
         </div>
         <div class="device-in-ring"></div>
       </div>
       <div class="data-ring"></div>
-      <div class="data-rect"></div>
+      <div class="data-rect">
+        <dv-border-box-11 
+        title="dv-border-box-11"
+        >
+        dv-border-box-11
+        </dv-border-box-11>
+      </div>
     </div>
     <!-- 底部左边角 -->
     <div class="panel-footer"></div>
@@ -91,4 +97,5 @@ export default {
     transform: rotateZ(288deg);
   }
 }
+
 </style>

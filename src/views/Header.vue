@@ -1,24 +1,56 @@
 <template>
-  <header>
-    <!-- 头部标题和时间 -->
-    <!-- 时间 -->
-    <div class="showTime">
-      <div class="leftTime"></div>
-      <div class="rightTime">
-        <div class="week"></div>
-        <div class="date"></div>
+  <div>
+    <header>
+      <!-- 时间 -->
+      <div class="showTime">
+        <div class="leftTime">{{ dateDay }}</div>
+        <div class="rightTime">
+          <div class="week">{{ dateWeek }}</div>
+          <div class="date">{{ dateYear }}</div>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      dateDay: null,
+      dateWeek: null,
+      dateYear:null,
+      weekDay: [
+        "星期日",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六",
+      ],
+      timer: null,
+    };
+  },
+  mounted() {
+    this.timer = setInterval(() => {
+      const date = this.$dayjs();
+      this.dateDay = date.format("HH:mm:ss");
+      this.dateYear = date.format("YYYY/MM/DD");
+      this.dateWeek = date.format(this.weekDay[date.day()]);
+    }, 1000);
+  },
+  beforeDestroy(){
+    if(this.timer){
+      clearInterval(this.timer)
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
+// 头部
 header {
   // 顶部75px
   height: 0.9375rem;
@@ -28,12 +60,9 @@ header {
   .showTime {
     // 时间容器宽320px
     width: 3.05rem;
-    // width: 3.05rem;
     // 高75px
     height: 0.9375rem;
-    // background-color: #fff;
     position: absolute;
-    // top: 30px;
     right: 0.3rem;
     color: rgba(96, 228, 240);
     font-size: 25px;
@@ -41,11 +70,8 @@ header {
 
     .leftTime {
       position: absolute;
-      left: 0.625rem;
       bottom: 0;
       flex: 1;
-      // font-size: 25px;
-      // background-color: #fff;
     }
 
     .rightTime {

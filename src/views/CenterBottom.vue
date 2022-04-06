@@ -1,5 +1,5 @@
 <template>
-  <div class="panel line-chart">
+  <div class="line-chart">
     <h2>在线体验人数统计</h2>
     <div class="chart"></div>
     <div class="panel-footer"></div>
@@ -95,5 +95,6 @@ export default {
 };
 </script>
 
-<style>
+<style lang='less' scoped>
+
 </style>
