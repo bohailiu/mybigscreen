@@ -10,12 +10,11 @@
         <div class="column">
           <!-- 公共盒子样式 -->
           <itemPanel>
-             <LeftTop />
+             <LeftTop/>
           </itemPanel>
-         
           <!-- 垂直柱状图 -->
           <itemPanel>
-            <!-- <LeftCenter /> -->
+            <LeftCenter />
           </itemPanel>
           
           <!-- 扇形图 -->

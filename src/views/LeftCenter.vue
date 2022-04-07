@@ -7,55 +7,55 @@
 </template>
 
 <script>
-import axios from "axios";
-axios.defaults.baseURL = "http://dsj.ppaa66.com/index.php/api/index";
+// import axios from "axios";
+// this.$axios.defaults.baseURL = "http://dsj.ppaa66.com/index.php/api/index";
 export default {
   name: "LeftCenter",
   data() {
-    return {};
+    return {
+      teacherArr: null,
+      studentArr: null,
+    };
   },
   mounted() {
     this.drawChart();
+    // setInterval(() => {
+    //   this.drawChart();
+    // }, 60000);
   },
+  destroyed() {},
   methods: {
     drawChart() {
-      let myChart = this.$echarts.init(document.querySelector(".bar .chart"));
-      myChart.showLoading()//网速慢时显示加载效果
-      axios.get("/ssmatching").then(
+
+      let myChart = this.$echarts.getInstanceByDom(document.querySelector(".bar .chart"))
+
+      if (myChart == null) {
+        myChart = this.$echarts.init(document.querySelector(".bar .chart"))
+        
+      }
+
+      // let myChart = this.$echarts.init(document.querySelector(".bar .chart"));
+
+      // myChart.showLoading(); //网速慢时显示加载效果
+
+      this.$axios.get("/ssmatching").then(
         (response) => {
-          console.log("请求成功了", response.data.content.data);
-          myChart.hideLoading()//请求成功后结束加载效果
+          console.log("LeftCenter请求成功了");
+
+          // myChart.hideLoading(); //请求成功后结束加载效果
+
           let arr = response.data.content.data;
-          // arr.forEach(i => {
-          //   console.log(i)
-          // });
-          let studentData = [
-            arr[0].student,
-            arr[1].student,
-            arr[2].student,
-            arr[3].student,
-            arr[4].student,
-            arr[5].student,
-            arr[6].student,
-            arr[7].student,
-            arr[8].student,
-          ];
-          let teacherData = [
-            arr[0].teacher,
-            arr[1].teacher,
-            arr[2].teacher,
-            arr[3].teacher,
-            arr[4].teacher,
-            arr[5].teacher,
-            arr[6].teacher,
-            arr[7].teacher,
-            arr[8].teacher,
-          ];
+          // 从arr数组中提取出每个对象的teacher和student属性值
+          this.teacherArr = arr.map((item) => {
+            return item.teacher;
+          });
+          this.studentArr = arr.map((item) => {
+            return item.student;
+          });
 
           let option = {
-            
-            animation:true,
-            animationDuration:3000,
+            animation: true,
+            animationDuration: 3000,
             title: {
               text: "区 域",
               textStyle: {
@@ -141,26 +141,26 @@ export default {
                 type: "bar",
                 barWidth: "28%", //修改柱子宽度
                 // data: [390, 400, 350, 450, 490, 440, 410, 190, 420],
-                data: studentData,
+                data: this.studentArr,
                 itemStyle: {
                   // 修改柱子圆角
                   // barBorderRadius:5
                   // 修改颜色
                   // color: "rgb(0, 200, 252)",
-                  color:new this.$echarts.graphic.LinearGradient(0,1,0,0,[
+                  color: new this.$echarts.graphic.LinearGradient(0, 1, 0, 0, [
                     {
-                      offset:0,
-                      color:'rgba(0, 200, 252,0)'
+                      offset: 0,
+                      color: "rgba(0, 200, 252,0)",
                     },
                     {
-                      offset:0.4,
-                      color:'rgba(0, 200, 252,.3)'
+                      offset: 0.4,
+                      color: "rgba(0, 200, 252,.3)",
                     },
                     {
-                      offset:1,
-                      color:'rgb(0, 200, 252)'
+                      offset: 1,
+                      color: "rgb(0, 200, 252)",
                     },
-                  ])
+                  ]),
                   // 边框色
                   // borderColor: "",
                   // 边框宽
@@ -173,23 +173,30 @@ export default {
                 type: "bar",
                 barWidth: "28%",
                 // data: [500, 470, 280, 450, 340, 400, 380, 500, 300],
-                data:teacherData,
+                data: this.teacherArr,
                 itemStyle: {
                   // color: "rgb(0, 109, 232)",
-                  color:new this.$echarts.graphic.LinearGradient(0,1,0,0,[
-                    {
-                      offset:0,
-                      color:'rgba(0, 109, 232,0)'
-                    },
-                    {
-                      offset:0.4,
-                      color:'rgba(0, 109, 232,.3)'
-                    },
-                    {
-                      offset:1,
-                      color:'rgb(0, 109, 232)'
-                    },
-                  ],false)
+                  color: new this.$echarts.graphic.LinearGradient(
+                    0,
+                    1,
+                    0,
+                    0,
+                    [
+                      {
+                        offset: 0,
+                        color: "rgba(0, 109, 232,0)",
+                      },
+                      {
+                        offset: 0.4,
+                        color: "rgba(0, 109, 232,.3)",
+                      },
+                      {
+                        offset: 1,
+                        color: "rgb(0, 109, 232)",
+                      },
+                    ],
+                    false
+                  ),
                 },
               },
             ],
@@ -226,5 +233,4 @@ export default {
 </script>
 
 <style lang='less' scoped>
-
 </style>

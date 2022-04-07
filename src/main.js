@@ -22,6 +22,12 @@ import 'swiper/dist/css/swiper.css'
 
 import dataV from '@jiaminghi/data-view'
 
+import Charts from '@jiaminghi/charts'
+
+import axios from "axios";
+
+axios.defaults.baseURL = "http://dsj.ppaa66.com/index.php/api/index";
+
 Vue.config.productionTip = false
 
 Vue.use(less)
@@ -36,7 +42,9 @@ Vue.prototype.$dayjs = dayjs;//可以全局使用dayjs
 
 Vue.prototype.$echarts = echarts
 
+Vue.prototype.$Charts = Charts
 
+Vue.prototype.$axios = axios
 
 new Vue({
   router,
